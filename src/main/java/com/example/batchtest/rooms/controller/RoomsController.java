@@ -18,10 +18,11 @@ import org.springframework.web.bind.annotation.RestController;
 public class RoomsController {
     private final RoomsServiceImplV1 roomsService;
 
-    @PostMapping("room")
+    @PostMapping("/rooms")
     public ResponseEntity<RoomsCreateResponseDto> createRoom(
             @RequestBody RoomsCreateRequestDto requestDto,
             Users user){
+        System.out.println(requestDto.getRoomName());
         RoomsCreateResponseDto responseDto = roomsService.createRoom(requestDto, user.getId());
         return new ResponseEntity<>(responseDto, HttpStatus.OK);
     }

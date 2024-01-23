@@ -23,9 +23,7 @@ public class Rooms extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String roomName;
-
-    private String roomNumber;
+    private String name;
 
     private String address;
 

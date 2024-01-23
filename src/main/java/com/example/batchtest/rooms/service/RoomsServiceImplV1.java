@@ -14,27 +14,30 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 @RequiredArgsConstructor
 public class RoomsServiceImplV1 implements RoomsService{
+
     private final RoomsRepository roomsRepository;
     private final UsersServiceImplV1 usersService;
+
     @Override
     @Transactional
     public RoomsCreateResponseDto createRoom(RoomsCreateRequestDto requestDto, Long userId){
         // 유저가 존재하는지?
         // 로그인한 사용자가 Users라는 가정... Security를 구성하지 않았기 때문
-        Users user = usersService.findById(userId);
+        // Users user = usersService.findById(userId);
+        // 어쩔 수 없음, 추후 추가 예정 -> 해당 users는 null
 
         Rooms room = Rooms.builder()
-                .users(user)
-                .roomName(requestDto.getRoomName())
-                .roomNumber(requestDto.getRoomName())
+                .users(null)
+                .name(requestDto.getRoomName())
+                .address(requestDto.getRoomAddress())
                 .build();
 
         roomsRepository.save(room);
 
         return RoomsCreateResponseDto.builder()
                 .address(room.getAddress())
-                .roomName(room.getRoomName())
-                .username(user.getUsername())
+                .roomName(room.getName())
+                .username(null)
                 .build();
     }
 

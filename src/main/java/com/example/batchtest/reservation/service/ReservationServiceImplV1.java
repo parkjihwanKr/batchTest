@@ -48,7 +48,7 @@ public class ReservationServiceImplV1 implements ReservationService {
 
         return CreateReservationResponseDto.builder()
                 .username(user.getUsername())
-                .roomName(room.getRoomName())
+                .roomName(room.getName())
                 .roomAddress(room.getAddress())
                 .checkIn(reservation.getCheckIn())
                 .checkOut(reservation.getCheckOut())

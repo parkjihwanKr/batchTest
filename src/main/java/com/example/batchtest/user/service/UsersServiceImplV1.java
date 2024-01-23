@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -18,13 +19,17 @@ public class UsersServiceImplV1 implements UsersService{
     @Override
     @Transactional
     public void createUser(UserCreateRequestDto requestDto){
-        usersRepository.findByUsername(requestDto.getUsername()).orElseThrow(
-                ()-> new IllegalArgumentException("해당 유저는 유저 네임이 중복됩니다.")
-        );
+
+        Optional<Users> checkUsername = usersRepository.findByUsername(requestDto.getUsername());
+        if(checkUsername.isPresent()){
+            throw new IllegalArgumentException("중복되는 유저 네임이 존재합니다.");
+        }
+
         Users user = Users.builder()
                 .username(requestDto.getUsername())
                 .password(UUID.randomUUID()+requestDto.getPassword())
                 .build();
+
         usersRepository.save(user);
     }
 
