@@ -1,5 +1,6 @@
 package com.example.batchtest.rooms.entity;
 
+import com.example.batchtest.global.BaseEntity;
 import com.example.batchtest.reservation.entity.Reservation;
 import com.example.batchtest.user.entity.Users;
 import jakarta.persistence.*;
@@ -16,7 +17,7 @@ import java.util.List;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Rooms {
+public class Rooms extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

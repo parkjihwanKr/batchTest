@@ -37,4 +37,11 @@ public class RoomsServiceImplV1 implements RoomsService{
                 .username(user.getUsername())
                 .build();
     }
+
+    @Transactional(readOnly = true)
+    public Rooms findById(Long roomId){
+        return roomsRepository.findById(roomId).orElseThrow(
+                ()-> new IllegalArgumentException("해당 방이 존재하지 않습니다.")
+        );
+    }
 }

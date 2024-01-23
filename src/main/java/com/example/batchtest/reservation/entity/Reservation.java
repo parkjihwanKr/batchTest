@@ -1,5 +1,6 @@
 package com.example.batchtest.reservation.entity;
 
+import com.example.batchtest.global.BaseEntity;
 import com.example.batchtest.rooms.entity.Rooms;
 import com.example.batchtest.user.entity.Users;
 import jakarta.persistence.*;
@@ -10,10 +11,11 @@ import java.time.LocalDateTime;
 
 @Entity
 @Getter
+@Builder
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
 @SQLDelete(sql = "UPDATE Reservation SET is_deleted = true, deleted_at = CURRENT_TIMESTAMP WHERE id = ?")
-public class Reservation {
+public class Reservation extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
