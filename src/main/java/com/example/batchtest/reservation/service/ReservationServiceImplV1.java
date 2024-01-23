@@ -25,20 +25,13 @@ public class ReservationServiceImplV1 implements ReservationService {
         // User는 해당 로그인 사용자
         // Room은 Host가 만든 Room
         // 로그인 사용자와 Host는 다른 사람, 같은 사람이 예약 하는건 이상한데...?
-        LocalDateTime nowDate = LocalDateTime.now();
+        // LocalDateTime nowDate = LocalDateTime.now();
 
         // 날짜가 같아도 false
         // 이는 틀렸음, 이를 감안하여 적길
-        if(nowDate.isBefore(requestDto.getCheckIn())){
-            throw new IllegalArgumentException("현재 날짜보다 전 날짜여서 예약이 되지 않습니다.");
-        }
-
-        if(requestDto.getCheckIn() != requestDto.getCheckOut()){
-            throw new IllegalArgumentException("예약 마지막 날이 예약 시작 날짜보다 먼저 있어야합니다.");
-        }
 
         Reservation reservation = Reservation.builder()
-                .users(user)
+                .users(null)
                 .rooms(room)
                 .checkIn(requestDto.getCheckIn())
                 .checkOut(requestDto.getCheckOut())
@@ -52,6 +45,8 @@ public class ReservationServiceImplV1 implements ReservationService {
                 .roomAddress(room.getAddress())
                 .checkIn(reservation.getCheckIn())
                 .checkOut(reservation.getCheckOut())
+                .createdAt(reservation.getCreatedAt())
+                .modifiedAt(reservation.getModifiedAt())
                 .build();
     }
 }

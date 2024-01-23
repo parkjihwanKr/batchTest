@@ -11,6 +11,8 @@ public class CreateReservationResponseDto {
     private String username;
     private String roomName;
     private String roomAddress;
-    private LocalDateTime checkIn;
-    private LocalDateTime checkOut;
+    private String checkIn;
+    private String checkOut;
+    private LocalDateTime createdAt;
+    private LocalDateTime modifiedAt;
 }

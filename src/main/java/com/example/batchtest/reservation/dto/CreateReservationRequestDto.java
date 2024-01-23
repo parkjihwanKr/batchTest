@@ -8,6 +8,6 @@ import java.time.LocalDateTime;
 @Getter
 @Builder
 public class CreateReservationRequestDto {
-    private LocalDateTime checkIn;
-    private LocalDateTime checkOut;
+    private String checkIn;
+    private String checkOut;
 }

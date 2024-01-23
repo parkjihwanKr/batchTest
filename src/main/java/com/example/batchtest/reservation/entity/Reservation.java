@@ -29,11 +29,12 @@ public class Reservation extends BaseEntity {
     @JoinColumn(name = "users_id")
     private Users users;
 
+    // checkIn, checkOut 필드는
     @Column
-    private LocalDateTime checkIn;
+    private String checkIn;
 
     @Column
-    private LocalDateTime checkOut;
+    private String checkOut;
 
     @Column
     private Boolean isDeleted;
