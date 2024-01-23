@@ -28,4 +28,10 @@ public class UsersServiceImplV1 implements UsersService{
         usersRepository.save(user);
     }
 
+    @Transactional(readOnly = true)
+    public Users findById(Long userId){
+        return usersRepository.findById(userId).orElseThrow(
+                ()-> new IllegalArgumentException("해당 유저는 존재하지 않습니다.")
+        );
+    }
 }

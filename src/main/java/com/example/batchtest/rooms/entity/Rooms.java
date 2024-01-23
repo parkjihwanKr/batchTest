@@ -4,12 +4,16 @@ import com.example.batchtest.reservation.entity.Reservation;
 import com.example.batchtest.user.entity.Users;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@Builder
+@Getter
 @AllArgsConstructor
 @NoArgsConstructor
 public class Rooms {
@@ -21,6 +25,8 @@ public class Rooms {
     private String roomName;
 
     private String roomNumber;
+
+    private String address;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "users_id")

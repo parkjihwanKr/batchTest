@@ -21,6 +21,6 @@ public class UserController {
     public ResponseEntity<Void> createUser(
         @RequestBody UserCreateRequestDto requestDto){
         usersService.createUser(requestDto);
-        return new ResponseEntity<Void>(HttpStatus.CREATED);
+        return new ResponseEntity<>(HttpStatus.CREATED);
     }
 }
